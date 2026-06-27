@@ -76,7 +76,7 @@ cp .env.example .env
 #   OPENROUTER__API_KEY=sk-or-v1-your-key-here
 
 # 3. Start supporting services + app
-docker compose -f docker-compose.dev.yml up --build -d
+docker compose up --build -d
 
 # The app will be available at http://localhost:8000
 # Open WebUI will be available at http://localhost:3000
@@ -291,16 +291,16 @@ When enabled, the graph pauses before the approval node. Use `POST /api/v1/appro
 
 ```bash
 # Rebuild and restart just the app (after code changes)
-docker compose -f docker-compose.dev.yml up --build -d app
+docker compose up --build -d app
 
 # Full rebuild of all services
-docker compose -f docker-compose.dev.yml up --build -d
+docker compose up --build -d
 
 # View logs for a specific service
-docker compose -f docker-compose.dev.yml logs -f app
+docker compose logs -f app
 
 # Check container health status
-docker compose -f docker-compose.dev.yml ps
+docker compose ps
 ```
 
 ## Development (without Docker)
@@ -313,7 +313,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 uv sync
 
 # Start supporting dependencies (Postgres, Redis, Qdrant) via Docker
-docker compose -f docker-compose.dev.yml up postgres redis qdrant -d
+docker compose up postgres redis qdrant -d
 
 # Run the app (from src/)
 uv run uvicorn main:app --reload --host 0.0.0.0 --port 8000
